@@ -26,6 +26,7 @@ const Image = styled.img`
 `;
 
 const Caption = styled.figcaption`
+  font: var(--font-caption);
   text-align: center;
   margin-top: 0.25rem;
 `;
