@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Loader from "@/components/Layout/Loader";
-import Recipes from "@/components/Recipes";
+import RecipeList from "@/components/RecipeList";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,5 +15,5 @@ export default function HomePage() {
     fakeDataFetch();
   }, []);
 
-  return isLoading ? <Loader /> : <Recipes />;
+  return isLoading ? <Loader /> : <RecipeList />;
 }
