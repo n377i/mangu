@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  background: linear-gradient(to bottom right, #fea500, #fe9800);
+  background: var(--color-gradient);
   display: flex;
   justify-content: center;
   align-items: center;
