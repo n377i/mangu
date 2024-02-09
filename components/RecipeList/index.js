@@ -5,7 +5,7 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
 `;
 
 const ImageContainer = styled.div`
@@ -38,10 +38,7 @@ export default function RecipeList() {
         <div key={recipe.id}>
           <figure>
             <ImageContainer>
-              <Image 
-                src={recipe.image} 
-                alt={recipe.name}
-              />
+              <Image src={recipe.image} alt={recipe.name} />
             </ImageContainer>
             <Caption>{recipe.name}</Caption>
           </figure>
