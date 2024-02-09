@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const NavBar = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: flex-start;
   position: fixed;
   bottom: 0;
@@ -13,6 +13,10 @@ const NavBar = styled.nav`
   background: var(--color-white);
   box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.2);
   z-index: 2;
+`;
+
+const NavLink = styled(Link)`
+  margin-top: 15px;
 `;
 
 const AddButton = styled.div`
@@ -47,11 +51,17 @@ export default function BottomNav() {
   return (
     <>
       <NavBar>
-        <Link href="/">
+        <NavLink href="/">
+          <img src="/assets/icon_recipes.svg" alt="Recipes" />
+        </NavLink>
+        <Link href="/add-form">
           <AddButton>
             <AddIcon src="/assets/icon_add.svg" alt="Add" />
           </AddButton>
         </Link>
+        <NavLink href="#">
+          <img src="/assets/icon_search.svg" alt="Search" />
+        </NavLink>
       </NavBar>
       <AddButtonShadow />
     </>
