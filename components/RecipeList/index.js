@@ -1,4 +1,5 @@
-import { recipes } from "@/lib/data";
+import useSWR from "swr";
+import Link from "next/link";
 import styled from "styled-components";
 
 const GridContainer = styled.div`
@@ -32,17 +33,23 @@ const Caption = styled.figcaption`
 `;
 
 export default function RecipeList() {
+  const { data, isLoading } = useSWR("/api/recipes");
+
+  if (!data || isLoading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <GridContainer>
-      {recipes.map((recipe) => (
-        <div key={recipe.id}>
+      {data.map((recipe) => (
+        <Link href={`/${recipe._id}`} key={recipe._id}>
           <figure>
             <ImageContainer>
-              <Image src={recipe.image} alt={recipe.name} />
+              <Image src={`${recipe.image}`} alt={recipe.title} />
             </ImageContainer>
-            <Caption>{recipe.name}</Caption>
+            <Caption>{recipe.title}</Caption>
           </figure>
-        </div>
+        </Link>
       ))}
     </GridContainer>
   );
