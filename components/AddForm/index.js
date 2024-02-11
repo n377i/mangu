@@ -39,7 +39,9 @@ export default function AddForm() {
   }
 
   const handleIncrement = () => {
-    setServings(servings + 1);
+    if (servings < 100) {
+      setServings(Math.min(servings + 1, 100));
+    }
   };
 
   const handleDecrement = () => {
