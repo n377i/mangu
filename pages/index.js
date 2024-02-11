@@ -5,12 +5,12 @@ import BottomNav from "@/components/BottomNav";
 import TopNav from "@/components/TopNav";
 import styled from "styled-components";
 
+const MainContent = styled.main`
+  padding: 91px 0 100px;
+`;
+
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
-
-  const MainContent = styled.main`
-    padding: 91px 0 100px;
-  `;
 
   useEffect(() => {
     const fakeDataFetch = () => {
