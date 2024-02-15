@@ -1,6 +1,8 @@
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { Card } from "@/components/Layout/Card";
+import { CenterDiv } from "@/components/Layout/CenterDiv";
+import { PuffLoader } from "react-spinners";
 import styled from "styled-components";
 
 const ImageContainer = styled.div`
@@ -21,7 +23,11 @@ export default function Recipe() {
   const { data, isLoading } = useSWR(`/api/recipes/${id}`);
 
   if (!data || isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <CenterDiv>
+        <PuffLoader color="#fea500" />
+      </CenterDiv>
+    );
   }
 
   return (

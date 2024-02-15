@@ -1,5 +1,7 @@
 import useSWR from "swr";
 import Link from "next/link";
+import { PuffLoader } from "react-spinners";
+import { CenterDiv } from "@/components/Layout/CenterDiv";
 import styled from "styled-components";
 
 const GridContainer = styled.div`
@@ -36,7 +38,11 @@ export default function RecipeList() {
   const { data, isLoading } = useSWR("/api/recipes");
 
   if (!data || isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <CenterDiv>
+        <PuffLoader color="#fea500" />
+      </CenterDiv>
+    );
   }
 
   return (
