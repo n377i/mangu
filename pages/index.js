@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import Loader from "@/components/Layout/Loader";
+import { useState, useEffect } from "react";
+import Cover from "@/components/Layout/Cover";
 import RecipeList from "@/components/RecipeList";
 import BottomNav from "@/components/BottomNav";
 import TopNav from "@/components/TopNav";
@@ -10,27 +10,28 @@ const MainContent = styled.main`
 `;
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [showCover, setShowCover] = useState(true);
 
   useEffect(() => {
-    const fakeDataFetch = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1500);
-    };
+    const timer = setTimeout(() => {
+      setShowCover(false);
+    }, 1500);
 
-    fakeDataFetch();
+    return () => clearTimeout(timer);
   }, []);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <>
-      <TopNav />
-      <MainContent>
-        <RecipeList />
-      </MainContent>
-      <BottomNav />
+      {showCover && <Cover />}
+      {!showCover && (
+        <>
+          <TopNav />
+          <MainContent>
+            <RecipeList />
+          </MainContent>
+          <BottomNav />
+        </>
+      )}
     </>
   );
 }
