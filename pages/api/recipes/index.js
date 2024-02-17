@@ -1,5 +1,5 @@
-import dbConnect from "../../../db/connect";
-import Recipe from "../../../db/models/Recipe";
+import dbConnect from "@/db/connect";
+import Recipe from "@/db/models/Recipe";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -7,9 +7,7 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     const recipes = await Recipe.find();
     return response.status(200).json(recipes);
-  }
-
-  if (request.method === "POST") {
+  } else if (request.method === "POST") {
     try {
       const recipeData = request.body;
       await Recipe.create(recipeData);
@@ -19,5 +17,7 @@ export default async function handler(request, response) {
       console.log(error);
       response.status(400).json({ error: error.message });
     }
+  } else {
+    return response.status(405).json({ message: "Method not allowed" });
   }
 }
