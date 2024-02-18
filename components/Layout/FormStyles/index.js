@@ -9,7 +9,7 @@ export const formField = {
   borderRadius: "6px",
 };
 
-export const Form = styled.form`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
