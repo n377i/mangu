@@ -22,8 +22,8 @@ const FormHeading = styled.h1`
 
 export default function FormNav() {
   const router = useRouter();
-  const isAddForm = router.pathname === "/add-form";
-  const headingText = isAddForm ? "Rezept hinzufügen" : "Rezept bearbeiten";
+  const isCreate = router.pathname === "/create";
+  const headingText = isCreate ? "Rezept hinzufügen" : "Rezept bearbeiten";
 
   return (
     <>
