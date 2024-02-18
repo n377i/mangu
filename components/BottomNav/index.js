@@ -54,7 +54,7 @@ export default function BottomNav() {
         <NavLink href="/">
           <img src="/assets/icon_recipes.svg" alt="Recipes" />
         </NavLink>
-        <Link href="/add-form">
+        <Link href="/create">
           <AddButton>
             <AddIcon src="/assets/icon_add.svg" alt="Add" />
           </AddButton>
