@@ -35,7 +35,7 @@ const Caption = styled.figcaption`
 `;
 
 export default function RecipeList() {
-  const { data, isLoading } = useSWR("/api/recipes");
+  const { data, isLoading } = useSWR("/api/recipes", { fallbackData: [] });
 
   if (!data || isLoading) {
     return (
@@ -48,7 +48,7 @@ export default function RecipeList() {
   return (
     <GridContainer>
       {data.map((recipe) => (
-        <Link href={`/${recipe._id}`} key={recipe._id}>
+        <Link href={`/recipes/${recipe._id}`} key={recipe._id}>
           <figure>
             <ImageContainer>
               <Image src={`${recipe.image}`} alt={recipe.title} />
