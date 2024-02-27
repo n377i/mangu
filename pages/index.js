@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import Cover from "@/components/Layout/Cover";
-import RecipeList from "@/components/RecipeList";
-import BottomNav from "@/components/BottomNav";
-import TopNav from "@/components/TopNav";
+import { useContext } from "react";
+import { CoverContext } from "@/pages/_app";
+import Cover from "@/components/Cover/Cover";
+import RecipeList from "@/components/RecipeList/RecipeList";
+import BottomNav from "@/components/BottomNav/BottomNav";
+import TopNav from "@/components/TopNav/TopNav";
 import styled from "styled-components";
 
 const MainContent = styled.main`
@@ -10,15 +11,7 @@ const MainContent = styled.main`
 `;
 
 export default function HomePage() {
-  const [showCover, setShowCover] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowCover(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const showCover = useContext(CoverContext);
 
   return (
     <>

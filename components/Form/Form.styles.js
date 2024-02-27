@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const formField = {
+export const FormField = {
   font: "var(--font-body)",
   color: "var(--color-grey)",
   marginBottom: "29px",
