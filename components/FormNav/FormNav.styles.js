@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-const NavContainer = styled.div`
+export const NavContainer = styled.div`
   padding: 55px 0 80px;
   background: var(--color-gradient);
 `;
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -13,7 +13,7 @@ const Nav = styled.nav`
   padding: 0 24px;
 `;
 
-const FormHeading = styled.h1`
+export const FormHeading = styled.h1`
   font: var(--font-form-heading);
   color: var(--color-white);
 `;
