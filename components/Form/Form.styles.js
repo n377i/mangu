@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FormField = {
+export const formField = {
   font: "var(--font-body)",
   color: "var(--color-grey)",
   marginBottom: "29px",
@@ -77,8 +77,9 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   padding: 10px;
-  width: 50%;
+  flex: 1;
   background: var(--color-gradient);
   border: none;
   border-radius: 8px;
+  cursor: pointer;
 `;
