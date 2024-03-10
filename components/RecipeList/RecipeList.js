@@ -2,6 +2,12 @@ import useSWR from "swr";
 import Link from "next/link";
 import { PuffLoader } from "react-spinners";
 import { CenterDiv } from "@/styles";
+import {
+  GridContainer,
+  ImageContainer,
+  Image,
+  Caption,
+} from "./RecipeList.styles";
 
 export default function RecipeList() {
   const { data, isLoading } = useSWR("/api/recipes", { fallbackData: [] });
