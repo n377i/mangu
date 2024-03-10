@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
@@ -42,4 +42,21 @@ export default createGlobalStyle`
     font: var(--font-body);
     color: var(--color-night);
   }
+`;
+
+export const Card = styled.div`
+  position: relative;
+  top: -36px;
+  padding: 45px 24px 14px;
+  background: var(--color-white);
+  border-radius: 40px;
+  z-index: 1;
+`;
+
+export const CenterDiv = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 `;
