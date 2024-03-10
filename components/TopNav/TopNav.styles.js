@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NavContainer = styled.nav`
+export const NavContainer = styled.nav`
   position: fixed;
   display: flex;
   justify-content: space-between;
