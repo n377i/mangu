@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   FormContainer,
   Label,
@@ -5,24 +7,28 @@ import {
   TextArea,
   NumberContainer,
   NumberWrapper,
-  NumberDisplay,
   NumberButton,
+  NumberDisplay,
   ButtonWrapper,
   ButtonOutline,
   Button,
 } from "./Form.styles";
-import Link from "next/link";
-import { useState } from "react";
 
 export default function Form({ onSubmit, formName, defaultData }) {
+  const router = useRouter();
   const [servings, setServings] = useState(defaultData?.servings || 2);
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    data.servings = servings;
     onSubmit(data);
-  }
+  };
+
+  const handleCancel = () => {
+    router.push("/");
+  };
 
   const handleIncrement = () => {
     if (servings < 100) {
@@ -76,9 +82,9 @@ export default function Form({ onSubmit, formName, defaultData }) {
         hinzufügen
       </ButtonOutline>
       <ButtonWrapper>
-        <Link href="/">
-          <Button type="button">Abbrechen</Button>
-        </Link>
+        <Button type="button" onClick={handleCancel}>
+          Abbrechen
+        </Button>
         <Button type="submit">Speichern</Button>
       </ButtonWrapper>
     </FormContainer>
