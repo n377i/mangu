@@ -14,10 +14,26 @@ export default async function handler(request, response) {
 
     response.status(200).json(recipe);
   } else if (request.method === "PATCH") {
-    const recipeToUpdate = await Recipe.findByIdAndUpdate(id, {
-      $set: request.body,
-    });
-    response.status(200).json(recipeToUpdate);
+    try {
+      const { title, ingredients, preparation, image, servings } = request.body;
+
+      const updateFields = {};
+      if (title) updateFields.title = title;
+      if (servings) updateFields.servings = servings;
+      if (ingredients) updateFields.ingredients = ingredients;
+      if (preparation) updateFields.preparation = preparation;
+      if (image && typeof image === "string") updateFields.image = image;
+
+      const recipeToUpdate = await Recipe.findByIdAndUpdate(id, {
+        $set: updateFields,
+      });
+      response.status(200).json(recipeToUpdate);
+    } catch (error) {
+      console.error("Error updating recipe:", error);
+      return response
+        .status(500)
+        .json({ message: "Internal Server Error", error: error.message });
+    }
   } else if (request.method === "DELETE") {
     const recipeToDelete = await Recipe.findByIdAndDelete(id);
     response.status(200).json(recipeToDelete);
