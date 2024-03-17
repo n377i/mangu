@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import upload from "@/utils/upload";
 import {
   FormContainer,
   Label,
@@ -9,21 +10,68 @@ import {
   NumberWrapper,
   NumberButton,
   NumberDisplay,
+  PreviewContainer,
+  PreviewImage,
+  Overlay,
+  DeleteIcon,
+  FileInput,
+  UploadButton,
   ButtonWrapper,
-  ButtonOutline,
   Button,
 } from "./Form.styles";
 
 export default function Form({ onSubmit, formName, defaultData }) {
   const router = useRouter();
   const [servings, setServings] = useState(defaultData?.servings || 2);
+  const [previewImage, setPreviewImage] = useState(defaultData?.image || null);
+  const [title, setTitle] = useState(defaultData?.title || "");
+  const [ingredients, setIngredients] = useState(
+    defaultData?.ingredients || ""
+  );
+  const [preparation, setPreparation] = useState(
+    defaultData?.preparation || ""
+  );
 
-  const handleSubmit = (event) => {
+  const handleImageChange = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      try {
+        // Bild hochladen
+        const imageUrl = await upload(file);
+        setPreviewImage(imageUrl); // Aktualisieren Sie die Bildvorschau mit der URL des hochgeladenen Bildes
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        // Fehlerbehandlung beim Hochladen des Bildes
+      }
+    }
+  };
+
+  const handleDeleteImage = () => {
+    setPreviewImage(null);
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    data.servings = servings;
-    onSubmit(data);
+
+    try {
+      // Erstellen Sie ein aktualisiertes Rezeptobjekt
+      const updatedRecipe = {
+        title,
+        servings,
+        ingredients,
+        preparation,
+        image: previewImage, // Verwenden Sie die Bild-URL aus der Bildvorschau
+      };
+
+      // Übergabe des aktualisierten Rezeptobjekts an die onSubmit-Funktion
+      await onSubmit(updatedRecipe);
+
+      // Nach erfolgreicher Aktualisierung zur Startseite navigieren
+      router.push("/");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Fehlerbehandlung beim Absenden des Formulars
+    }
   };
 
   const handleCancel = () => {
@@ -49,7 +97,8 @@ export default function Form({ onSubmit, formName, defaultData }) {
         type="text"
         id="title"
         name="title"
-        defaultValue={defaultData?.title}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
       <NumberContainer>
         <Label htmlFor="title">Portionen</Label>
@@ -67,20 +116,56 @@ export default function Form({ onSubmit, formName, defaultData }) {
       <TextArea
         id="ingredients"
         name="ingredients"
-        defaultValue={defaultData?.ingredients}
+        value={ingredients}
+        onChange={(e) => setIngredients(e.target.value)}
         rows={14}
       />
       <Label htmlFor="preparation">Zubereitung</Label>
       <TextArea
         id="preparation"
         name="preparation"
-        defaultValue={defaultData?.preparation}
+        value={preparation}
+        onChange={(e) => setPreparation(e.target.value)}
         rows={14}
       />
-      <ButtonOutline type="button" href="#">
-        <img src="/assets/icon_image-upload.svg" alt="Bild hinzufügen" /> Bild
-        hinzufügen
-      </ButtonOutline>
+      <PreviewContainer>
+        {previewImage && (
+          <>
+            <Overlay onClick={handleDeleteImage}>
+              <DeleteIcon
+                src="/assets/icon_delete-white.svg"
+                fill="white"
+                alt="Bild löschen"
+              />
+            </Overlay>
+            <PreviewImage
+              src={previewImage}
+              alt={previewImage ? "Bildvorschau" : ""}
+              onClick={() => document.getElementById("fileInput").click()}
+            />
+          </>
+        )}
+        <UploadButton>
+          {previewImage ? (
+            <>
+              <img src="/assets/icon_image-upload.svg" alt="Bild ersetzen" />
+              Bild ersetzen
+            </>
+          ) : (
+            <>
+              <img src="/assets/icon_image-upload.svg" alt="Bild hinzufügen" />
+              Bild hinzufügen
+            </>
+          )}
+          <FileInput
+            id="fileInput"
+            name="image"
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </UploadButton>
+      </PreviewContainer>
       <ButtonWrapper>
         <Button type="button" onClick={handleCancel}>
           Abbrechen
