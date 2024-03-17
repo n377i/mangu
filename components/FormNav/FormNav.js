@@ -12,11 +12,11 @@ export default function FormNav() {
       <NavContainer>
         <Nav>
           <Link href="/">
-            <img src="/assets/icon_arrow-left.svg" alt="Go back" />
+            <img src="/assets/icon_arrow-left.svg" alt="Zur&uuml;ck" />
           </Link>
           <FormHeading>{headingText}</FormHeading>
           <Link href="#">
-            <img src="/assets/icon_settings--white.svg" alt="Settings" />
+            <img src="/assets/icon_settings-white.svg" alt="Einstellungen" />
           </Link>
         </Nav>
       </NavContainer>
