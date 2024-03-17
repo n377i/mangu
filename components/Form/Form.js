@@ -36,12 +36,10 @@ export default function Form({ onSubmit, formName, defaultData }) {
     const file = event.target.files[0];
     if (file) {
       try {
-        // Bild hochladen
         const imageUrl = await upload(file);
-        setPreviewImage(imageUrl); // Aktualisieren Sie die Bildvorschau mit der URL des hochgeladenen Bildes
+        setPreviewImage(imageUrl);
       } catch (error) {
         console.error("Error uploading image:", error);
-        // Fehlerbehandlung beim Hochladen des Bildes
       }
     }
   };
@@ -54,23 +52,18 @@ export default function Form({ onSubmit, formName, defaultData }) {
     event.preventDefault();
 
     try {
-      // Erstellen Sie ein aktualisiertes Rezeptobjekt
       const updatedRecipe = {
         title,
         servings,
         ingredients,
         preparation,
-        image: previewImage, // Verwenden Sie die Bild-URL aus der Bildvorschau
+        image: previewImage,
       };
 
-      // Übergabe des aktualisierten Rezeptobjekts an die onSubmit-Funktion
       await onSubmit(updatedRecipe);
-
-      // Nach erfolgreicher Aktualisierung zur Startseite navigieren
       router.push("/");
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Fehlerbehandlung beim Absenden des Formulars
     }
   };
 
