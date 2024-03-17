@@ -51,12 +51,40 @@ export const NumberDisplay = styled.span`
   margin: 0 10px;
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 12px;
+export const PreviewContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
 `;
 
-export const ButtonOutline = styled.button`
+export const PreviewImage = styled.img`
+  height: 298px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+`;
+
+export const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 298px;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: inherit;
+`;
+
+export const DeleteIcon = styled.img`
+  width: 70px;
+  height: 76px;
+  cursor: pointer;
+`;
+
+export const UploadButton = styled.label`
   font: var(--font-button);
   color: var(--color-orange);
   display: flex;
@@ -68,6 +96,16 @@ export const ButtonOutline = styled.button`
   background: var(--color-white);
   border: 2px solid var(--color-orange);
   border-radius: 8px;
+  cursor: pointer;
+`;
+
+export const FileInput = styled.input`
+  display: none;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 12px;
 `;
 
 export const Button = styled.button`
