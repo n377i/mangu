@@ -22,7 +22,7 @@ export default async function handler(request, response) {
       if (servings) updateFields.servings = servings;
       if (ingredients) updateFields.ingredients = ingredients;
       if (preparation) updateFields.preparation = preparation;
-      if (image && typeof image === "string") updateFields.image = image;
+      updateFields.image = image || null;
 
       const recipeToUpdate = await Recipe.findByIdAndUpdate(id, {
         $set: updateFields,
