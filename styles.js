@@ -22,7 +22,11 @@ export default createGlobalStyle`
     --font-form-heading: 500 1.25rem/1.25 var(--font-family);
     --font-form-label: 400 1.125rem/1.5 var(--font-family);
     --font-button: 500 1.125rem/1.25 var(--font-family);
+
+    /* Effects */
+    --shadow-icon: 0 4px 0 0 rgba(0, 0, 0, 0.5);
   }
+
 
   *,
   *::before,
