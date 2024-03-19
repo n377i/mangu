@@ -3,8 +3,10 @@ import { useRouter } from "next/router";
 import { Card } from "@/styles";
 import { CenterDiv } from "@/styles";
 import { PuffLoader } from "react-spinners";
-import Link from "next/link";
 import styled from "styled-components";
+import BackButton from "@/components/BackButton/BackButton";
+import EditButton from "@/components/EditButton/EditButton";
+import DeleteButton from "@/components/DeleteButton/DeleteButton";
 
 const ImageContainer = styled.div`
   width: 100%;
@@ -45,13 +47,9 @@ export default function DetailsPage() {
   return (
     <>
       <ImageContainer>
-        <Link href={`/`}>Back to home</Link>
-        <Link href={`/recipes/${id}/edit`} passHref legacyBehavior>
-          Edit
-        </Link>
-        <Link href={`#`} onClick={deleteRecipe}>
-          Delete
-        </Link>
+        <BackButton />
+        <EditButton id={id} />
+        <DeleteButton deleteRecipe={deleteRecipe} />
         <Image src={`${recipe.image}`} alt={recipe.title} />
       </ImageContainer>
       <Card>
