@@ -21,6 +21,7 @@ export default createGlobalStyle`
     --font-caption: 500 1rem/1.25 var(--font-family);
     --font-form-heading: 500 1.25rem/1.25 var(--font-family);
     --font-form-label: 400 1.125rem/1.5 var(--font-family);
+    --font-recipe-heading: 600 1.5rem/1.33 var(--font-family);
     --font-button: 500 1.125rem/1.25 var(--font-family);
 
     /* Effects */
