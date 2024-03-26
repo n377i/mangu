@@ -50,7 +50,7 @@ export default function DetailsPage() {
         <BackButton />
         <EditButton id={id} />
         <DeleteButton deleteRecipe={deleteRecipe} />
-        <Image src={`${recipe.image}`} alt={recipe.title} />
+        {recipe.image && <Image src={recipe.image.url} alt={recipe.title} />}
       </ImageContainer>
       <Card>
         <h1>{recipe.title}</h1>
