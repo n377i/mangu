@@ -32,15 +32,14 @@ export default function Form({ onSubmit, formName, defaultData }) {
     defaultData?.preparation || ""
   );
 
-  const handleImageChange = async (event) => {
+  const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      try {
-        const imageUrl = await upload(file);
-        setPreviewImage(imageUrl);
-      } catch (error) {
-        console.error("Error uploading image:", error);
-      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreviewImage(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -57,7 +56,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         servings,
         ingredients,
         preparation,
-        image: previewImage,
+        image: previewImage ? await upload(previewImage) : null,
       };
 
       await onSubmit(updatedRecipe);
@@ -126,7 +125,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
           <>
             <Overlay onClick={handleDeleteImage}>
               <DeleteIcon
-                src="/assets/icon_delete-white.svg"
+                src="/assets/icon_delete_shadow.svg"
                 fill="white"
                 alt="Bild löschen"
               />
