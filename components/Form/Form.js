@@ -67,7 +67,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
   };
 
   const handleCancel = () => {
-    router.push("/");
+    router.back();
   };
 
   const handleIncrement = () => {
