@@ -1,6 +1,6 @@
 import Logo from "@/public/logo.svg";
 import { useState, useEffect } from "react";
-import { StyledDiv } from "./Cover.styles";
+import { StyledDiv } from "./Cover.styled";
 
 export default function Cover() {
   const [isLogoVisible, setIsLogoVisible] = useState(false);
