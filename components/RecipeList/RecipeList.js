@@ -26,7 +26,10 @@ export default function RecipeList() {
         <Link href={`/recipes/${recipe._id}`} key={recipe._id}>
           <figure>
             <ImageContainer>
-              <Image src={`${recipe.image}`} alt={recipe.title} />
+              <Image
+                src={recipe.image || "/assets/placeholder.svg"}
+                alt={recipe.title}
+              />
             </ImageContainer>
             <Caption>{recipe.title}</Caption>
           </figure>
