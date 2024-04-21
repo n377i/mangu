@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { NavContainer, Nav, FormHeading } from "./FormNav.styles";
 import Link from "next/link";
+import BackButton from "../BackButton/BackButton";
 
 export default function FormNav() {
   const router = useRouter();
@@ -11,9 +12,7 @@ export default function FormNav() {
     <>
       <NavContainer>
         <Nav>
-          <Link href="/">
-            <img src="/assets/icon_arrow-left.svg" alt="Zur&uuml;ck" />
-          </Link>
+          <BackButton $isDefaultIcon />
           <FormHeading>{headingText}</FormHeading>
           <Link href="#">
             <img src="/assets/icon_settings-white.svg" alt="Einstellungen" />
