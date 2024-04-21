@@ -3,6 +3,6 @@ import styled from "styled-components";
 
 export const DeleteLink = styled(Link)`
   position: absolute;
-  top: 50px;
+  top: 54px;
   right: 62px;
 `;
