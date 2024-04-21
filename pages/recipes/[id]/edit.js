@@ -1,10 +1,10 @@
-import FormNav from "@/components/FormNav/FormNav";
-import Form from "@/components/Form/Form";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { Card } from "@/styles.js";
 import { CenterDiv } from "@/styles.js";
 import { PuffLoader } from "react-spinners";
+import FormNav from "@/components/FormNav/FormNav";
+import Form from "@/components/Form/Form";
 
 export default function EditPage() {
   const router = useRouter();
