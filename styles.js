@@ -18,16 +18,15 @@ export default createGlobalStyle`
     /* Font styles */
     --font-family: ${inter.style.fontFamily};
     --font-body: 300 1rem/1.5 var(--font-family);
+    --font-heading-1: 600 1.5rem/1.33 var(--font-family);
+    --font-heading-2: 500 1.25rem/1.25 var(--font-family);
     --font-caption: 500 1rem/1.25 var(--font-family);
-    --font-form-heading: 500 1.25rem/1.25 var(--font-family);
     --font-form-label: 400 1.125rem/1.5 var(--font-family);
-    --font-recipe-heading: 600 1.5rem/1.33 var(--font-family);
     --font-button: 500 1.125rem/1.25 var(--font-family);
 
     /* Effects */
     --shadow-icon: 0 4px 0 0 rgba(0, 0, 0, 0.5);
   }
-
 
   *,
   *::before,
@@ -50,10 +49,10 @@ export default createGlobalStyle`
 `;
 
 export const Card = styled.div`
-  position: relative;
-  top: -36px;
   padding: 45px 24px 14px;
   background: var(--color-white);
+  position: relative;
+  top: -36px;
   border-radius: 40px;
   z-index: 1;
 `;
