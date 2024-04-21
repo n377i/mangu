@@ -3,6 +3,6 @@ import styled from "styled-components";
 
 export const EditLink = styled(Link)`
   position: absolute;
-  top: 51px;
+  top: 55px;
   right: 20px;
 `;
