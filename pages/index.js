@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoverContext } from "@/pages/_app";
 import Cover from "@/components/Cover/Cover";
 import RecipeList from "@/components/RecipeList/RecipeList";
@@ -12,15 +12,26 @@ const MainContent = styled.main`
 
 export default function HomePage() {
   const showCover = useContext(CoverContext);
+  const [gridColumns, setGridColumns] = useState(2);
+
+  const toggleGridColumns = () => {
+    if (gridColumns === 2) {
+      setGridColumns(3);
+    } else if (gridColumns === 3) {
+      setGridColumns(1);
+    } else {
+      setGridColumns(2);
+    }
+  };
 
   return (
     <>
       {showCover && <Cover />}
       {!showCover && (
         <>
-          <TopNav />
+          <TopNav onToggleGridColumns={toggleGridColumns} />
           <MainContent>
-            <RecipeList />
+            <RecipeList gridColumns={gridColumns} />
           </MainContent>
           <BottomNav />
         </>
