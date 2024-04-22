@@ -9,7 +9,7 @@ import {
   Caption,
 } from "./RecipeList.styles";
 
-export default function RecipeList() {
+export default function RecipeList({ gridColumns }) {
   const { data, isLoading } = useSWR("/api/recipes", { fallbackData: [] });
 
   if (!data || isLoading) {
@@ -21,7 +21,7 @@ export default function RecipeList() {
   }
 
   return (
-    <GridContainer>
+    <GridContainer $columns={gridColumns}>
       {data.map((recipe) => (
         <Link href={`/recipes/${recipe._id}`} key={recipe._id}>
           <figure>
