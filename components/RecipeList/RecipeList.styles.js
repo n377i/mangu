@@ -27,5 +27,5 @@ export const Image = styled.img`
 export const Caption = styled.figcaption`
   font: var(--font-caption);
   text-align: center;
-  margin-top: 0.25rem;
+  margin-top: 0.438rem;
 `;
