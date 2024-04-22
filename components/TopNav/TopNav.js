@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { NavContainer } from "./TopNav.styles";
+import { IconButton, NavContainer } from "./TopNav.styles";
 
-export default function TopNav() {
+export default function TopNav({ onToggleGridColumns }) {
   return (
     <>
       <NavContainer>
-        <Link href="#">
+        <IconButton onClick={onToggleGridColumns}>
           <img src="/assets/icon_grid.svg" alt="Layout anpassen" />
-        </Link>
+        </IconButton>
         <img src="/assets/lettermark.svg" alt="Mangu Lettermark" />
         <Link href="#">
           <img src="/assets/icon_settings.svg" alt="Einstellungen" />
