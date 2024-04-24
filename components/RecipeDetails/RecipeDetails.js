@@ -17,21 +17,111 @@ import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import { Fragment } from "react";
 
+const convertFraction = (value) => {
+  const fractions = {
+    "1/2": "½",
+    "1/3": "⅓",
+    "2/3": "⅔",
+    "1/4": "¼",
+    "3/4": "¾",
+    "1/5": "⅕",
+    "2/5": "⅖",
+    "3/5": "⅗",
+    "4/5": "⅘",
+    "1/6": "⅙",
+    "5/6": "⅚",
+    "1/8": "⅛",
+    "3/8": "⅜",
+    "5/8": "⅝",
+    "7/8": "⅞",
+  };
+
+  // Mixed fraction
+  if (value.includes(" ")) {
+    const [whole, rest] = value.split(" ");
+    return `${whole} ${convertFraction(rest)}`;
+  }
+
+  // Fraction
+  if (fractions[value]) {
+    return fractions[value];
+  }
+
+  // Integer
+  return value;
+};
+
 export default function RecipeDetails({ recipe, id, deleteRecipe }) {
   const renderIngredients = () => {
     if (!recipe.ingredients) return null;
     const lines = recipe.ingredients.split("\n");
 
+    const units = [
+      "g",
+      "kg",
+      "ml",
+      "l",
+      "EL",
+      "TL",
+      "Prise",
+      "Tasse",
+      "Cup",
+      "Becher",
+      "Dose",
+      "Stück",
+      "Scheibe",
+      "Gramm",
+      "Kilogramm",
+      "Milliliter",
+      "Liter",
+      "Esslöffel",
+      "Teelöffel",
+      "Tassen",
+      "Cups",
+      "Stücke",
+      "Scheiben",
+    ];
+
     return (
       <IngredientTable>
         {lines.map((line, index) => {
-          const matches = line.match(/^(\d+(\.\d+)?)\s*(\S*)\s+(.*)$/);
-          const quantityUnit = matches ? `${matches[1]} ${matches[3]}` : "";
-          const ingredient = matches ? matches[4] : line.trim();
+          let quantity = "";
+          let unit = "";
+          let ingredient = "";
+
+          const words = line.split(" ");
+          for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            if (units.includes(word)) {
+              // word is a unit -> add it to 'unit', everything after to 'ingredient'
+              unit = word;
+              ingredient = words.slice(i + 1).join(" ");
+              break;
+            } else if (/^\d/.test(word)) {
+              // word begins with number -> add it to 'quantity'
+              quantity += word + " ";
+            } else {
+              // otherwise add it to 'ingredient'
+              ingredient += word + " ";
+            }
+          }
+
+          // Remove spaces
+          quantity = quantity.trim();
+          ingredient = ingredient.trim();
+
+          // Convert fractions to Unicode equivalents
+          quantity = convertFraction(quantity);
 
           return (
             <Fragment key={index}>
-              <span>{quantityUnit && <strong>{quantityUnit}</strong>}</span>
+              <span>
+                {quantity && (
+                  <strong>
+                    {quantity} {unit}
+                  </strong>
+                )}
+              </span>
               <span>{ingredient}</span>
             </Fragment>
           );
