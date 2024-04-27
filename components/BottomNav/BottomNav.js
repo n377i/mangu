@@ -7,16 +7,23 @@ import {
   AddIcon,
 } from "./BottomNav.styles";
 
-export default function BottomNav() {
+export default function BottomNav({ theme }) {
   return (
     <>
       <NavBar>
         <NavLink href="/">
-          <img src="/assets/icon_recipes.svg" alt="Recipes" />
+          <img src="/assets/icon_recipes.svg" alt="Rezept-Übersicht" />
         </NavLink>
         <Link href="/create">
           <AddButton>
-            <AddIcon src="/assets/icon_add.svg" alt="Add" />
+            <AddIcon
+              src={
+                theme === "dark"
+                  ? "/assets/icon_add_dark.svg"
+                  : "/assets/icon_add.svg"
+              }
+              alt="Rezept hinzufügen"
+            />
           </AddButton>
         </Link>
         <NavLink href="#">
