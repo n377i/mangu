@@ -20,7 +20,7 @@ import {
   Button,
 } from "./Form.styles";
 
-export default function Form({ onSubmit, formName, defaultData }) {
+export default function Form({ onSubmit, formName, defaultData, theme }) {
   const router = useRouter();
   const [servings, setServings] = useState(defaultData?.servings || 2);
   const [previewImage, setPreviewImage] = useState(defaultData?.image || null);
@@ -96,11 +96,25 @@ export default function Form({ onSubmit, formName, defaultData }) {
         <Label htmlFor="title">Portionen</Label>
         <NumberWrapper>
           <NumberButton type="button" onClick={handleDecrement}>
-            <img src="/assets/icon_minus.svg" alt="Minus" />
+            <img
+              src={
+                theme === "dark"
+                  ? "/assets/icon_minus_dark.svg"
+                  : "/assets/icon_minus.svg"
+              }
+              alt="Plus"
+            />
           </NumberButton>
           <NumberDisplay>{servings}</NumberDisplay>
           <NumberButton type="button" onClick={handleIncrement}>
-            <img src="/assets/icon_plus.svg" alt="Plus" />
+            <img
+              src={
+                theme === "dark"
+                  ? "/assets/icon_plus_dark.svg"
+                  : "/assets/icon_plus.svg"
+              }
+              alt="Plus"
+            />
           </NumberButton>
         </NumberWrapper>
       </NumberContainer>
