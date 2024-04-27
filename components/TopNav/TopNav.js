@@ -1,18 +1,17 @@
-import Link from "next/link";
-import { IconButton, NavContainer } from "./TopNav.styles";
+import { Button, NavContainer } from "./TopNav.styles";
+import ThemeButton from "../ThemeButton/ThemeButton";
 
-export default function TopNav({ onToggleGridColumns }) {
+export default function TopNav({ onToggleGridColumns, toggleTheme }) {
   return (
-    <>
-      <NavContainer>
-        <IconButton onClick={onToggleGridColumns}>
-          <img src="/assets/icon_grid.svg" alt="Layout anpassen" />
-        </IconButton>
-        <img src="/assets/lettermark.svg" alt="Mangu Lettermark" />
-        <Link href="#">
-          <img src="/assets/icon_settings.svg" alt="Einstellungen" />
-        </Link>
-      </NavContainer>
-    </>
+    <NavContainer>
+      <Button onClick={onToggleGridColumns} aria-label="Layout anpassen">
+        <img src="/assets/icon_grid.svg" alt="Layout anpassen" />
+      </Button>
+      <img src="/assets/lettermark.svg" alt="Mangu Lettermark" />
+      <ThemeButton
+        toggleTheme={toggleTheme}
+        iconSrc="/assets/icon_theme_orange.svg"
+      />
+    </NavContainer>
   );
 }
