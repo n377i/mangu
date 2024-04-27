@@ -8,11 +8,12 @@ const inter = Inter({
 export default createGlobalStyle`
   :root {
     /* Color styles */
-    --color-white: #fff;
+    --color-primary: #fff;
+    --color-secondary: #fea500;
+    --color-input: #fff;
     --color-grey: #666;
     --color-light-grey: #cdc8bf;
     --color-night: #333;
-    --color-orange: #fea500;
     --color-gradient: linear-gradient(to bottom right, #fec600, #fe9900);
 
     /* Font styles */
@@ -26,6 +27,14 @@ export default createGlobalStyle`
 
     /* Effects */
     --shadow-icon: 0 4px 0 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .dark {
+    --color-primary: #0f0e0e;
+    --color-grey: #999;
+    --color-light-grey: #666;
+    --color-night: #fff;
+    --color-input: #1f1f1f;
   }
 
   *,
@@ -42,7 +51,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--color-white);
+    background: var(--color-primary);
     font: var(--font-body);
     color: var(--color-night);
   }
@@ -50,7 +59,7 @@ export default createGlobalStyle`
 
 export const Card = styled.div`
   padding: 45px 24px 14px;
-  background: var(--color-white);
+  background: var(--color-primary);
   position: relative;
   top: -36px;
   border-radius: 40px;
