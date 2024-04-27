@@ -11,7 +11,7 @@ const MainContent = styled.main`
   padding: 91px 0 100px;
 `;
 
-export default function HomePage() {
+export default function HomePage({ theme, toggleTheme }) {
   const showCover = useContext(CoverContext);
   const [gridColumns, setGridColumns] = useLocalStorage("gridColumns", 2);
 
@@ -30,11 +30,15 @@ export default function HomePage() {
       {showCover && <Cover />}
       {!showCover && (
         <>
-          <TopNav onToggleGridColumns={toggleGridColumns} />
+          <TopNav
+            onToggleGridColumns={toggleGridColumns}
+            theme={theme}
+            toggleTheme={toggleTheme}
+          />
           <MainContent>
             <RecipeList gridColumns={gridColumns} />
           </MainContent>
-          <BottomNav />
+          <BottomNav theme={theme} />
         </>
       )}
     </>

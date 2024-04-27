@@ -6,7 +6,7 @@ import { PuffLoader } from "react-spinners";
 import FormNav from "@/components/FormNav/FormNav";
 import Form from "@/components/Form/Form";
 
-export default function EditPage() {
+export default function EditRecipePage({ theme, toggleTheme }) {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
@@ -32,12 +32,13 @@ export default function EditPage() {
 
   return (
     <>
-      <FormNav />
+      <FormNav theme={theme} toggleTheme={toggleTheme} />
       <Card>
         <Form
           onSubmit={editRecipe}
           formName={"edit-recipe"}
           defaultData={recipe}
+          theme={theme}
         />
       </Card>
     </>

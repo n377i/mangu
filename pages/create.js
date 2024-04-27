@@ -3,7 +3,7 @@ import Form from "@/components/Form/Form";
 import { Card } from "@/styles";
 import { useRouter } from "next/router";
 
-export default function CreateRecipePage() {
+export default function CreateRecipePage({ theme, toggleTheme }) {
   const router = useRouter();
 
   async function addRecipe(recipe) {
@@ -24,9 +24,9 @@ export default function CreateRecipePage() {
 
   return (
     <>
-      <FormNav />
+      <FormNav theme={theme} toggleTheme={toggleTheme} />
       <Card>
-        <Form onSubmit={addRecipe} formName={"add-recipe"} />
+        <Form onSubmit={addRecipe} formName={"add-recipe"} theme={theme} />
       </Card>
     </>
   );
