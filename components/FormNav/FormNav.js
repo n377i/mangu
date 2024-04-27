@@ -1,22 +1,22 @@
 import { useRouter } from "next/router";
 import { NavContainer, Nav, FormHeading } from "./FormNav.styles";
-import Link from "next/link";
 import BackButton from "../BackButton/BackButton";
+import ThemeButton from "../ThemeButton/ThemeButton";
 
-export default function FormNav() {
+export default function FormNav({ theme, toggleTheme }) {
   const router = useRouter();
   const isCreate = router.pathname === "/create";
   const headingText = isCreate ? "Rezept hinzufügen" : "Rezept bearbeiten";
+  const iconSrc =
+    theme === "dark" ? "/assets/icon_theme_dark.svg" : "/assets/icon_theme.svg";
 
   return (
     <>
       <NavContainer>
         <Nav>
-          <BackButton $isDefaultIcon />
+          <BackButton $isDefaultIcon theme={theme} />
           <FormHeading>{headingText}</FormHeading>
-          <Link href="#">
-            <img src="/assets/icon_settings-white.svg" alt="Einstellungen" />
-          </Link>
+          <ThemeButton toggleTheme={toggleTheme} iconSrc={iconSrc} />
         </Nav>
       </NavContainer>
     </>
