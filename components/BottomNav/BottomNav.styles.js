@@ -10,7 +10,7 @@ export const NavBar = styled.nav`
   left: 0;
   width: 100%;
   height: 80px;
-  background: var(--color-white);
+  background: var(--color-primary);
   box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.2);
   z-index: 2;
 `;
@@ -28,7 +28,7 @@ export const AddButton = styled.div`
   height: 70px;
   background: var(--color-gradient);
   border-radius: 50%;
-  border: 4px solid var(--color-white);
+  border: 4px solid var(--color-primary);
 `;
 
 export const AddButtonShadow = styled.div`
@@ -38,7 +38,7 @@ export const AddButtonShadow = styled.div`
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: var(--color-white);
+  background: var(--color-primary);
   box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.2);
 `;
 

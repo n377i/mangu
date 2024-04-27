@@ -19,7 +19,7 @@ export const Image = styled.img`
 
 export const Card = styled.div`
   padding: 118px 24px 45px;
-  background: var(--color-white);
+  background: var(--color-primary);
 
   ${({ $hasImage }) =>
     $hasImage &&
@@ -42,7 +42,7 @@ export const Section = styled.section`
 
 export const SectionTitle = styled.h2`
   font: var(--font-heading-2);
-  color: var(--color-orange);
+  color: var(--color-secondary);
   margin-bottom: 16px;
 `;
 
@@ -75,8 +75,8 @@ export const NumberCircle = styled.span`
   height: 22px;
   margin-top: 1px;
   border-radius: 50%;
-  background-color: var(--color-orange);
+  background-color: var(--color-secondary);
   font-weight: 400;
-  color: var(--color-white);
+  color: var(--color-primary);
   text-align: center;
 `;

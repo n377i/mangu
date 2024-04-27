@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const formField = {
   font: "var(--font-body)",
   color: "var(--color-grey)",
+  background: "var(--color-input)",
   marginBottom: "29px",
   padding: "12px",
   border: "1px solid var(--color-light-grey)",
@@ -86,15 +87,15 @@ export const DeleteIcon = styled.img`
 
 export const UploadButton = styled.label`
   font: var(--font-button);
-  color: var(--color-orange);
+  color: var(--color-secondary);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
   margin: 3px 0 50px;
   padding: 10px;
-  background: var(--color-white);
-  border: 2px solid var(--color-orange);
+  background: var(--color-primary);
+  border: 2px solid var(--color-secondary);
   border-radius: 8px;
   cursor: pointer;
 `;
@@ -110,7 +111,7 @@ export const ButtonWrapper = styled.div`
 
 export const Button = styled.button`
   font: var(--font-button);
-  color: var(--color-white);
+  color: var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: center;

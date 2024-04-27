@@ -15,5 +15,5 @@ export const Nav = styled.nav`
 
 export const FormHeading = styled.h1`
   font: var(--font-heading-2);
-  color: var(--color-white);
+  color: var(--color-primary);
 `;
