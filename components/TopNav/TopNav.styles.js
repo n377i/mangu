@@ -7,11 +7,11 @@ export const NavContainer = styled.nav`
   align-items: baseline;
   padding: 50px 24px 7px;
   width: 100%;
-  background: var(--color-white);
+  background: var(--color-primary);
   z-index: 1;
 `;
 
-export const IconButton = styled.button`
+export const Button = styled.button`
   border: none;
   background-color: transparent;
   padding: 0;
