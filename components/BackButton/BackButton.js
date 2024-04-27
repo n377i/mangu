@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { BackLink } from "./BackButton.styled";
 import Image from "next/image";
 
-export default function BackButton({ iconType, $isDefaultIcon }) {
+export default function BackButton({ iconType, $isDefaultIcon, theme }) {
   const router = useRouter();
 
   const handleClick = (event) => {
@@ -13,13 +13,16 @@ export default function BackButton({ iconType, $isDefaultIcon }) {
   let iconSrc;
   switch (iconType) {
     case "orange":
-      iconSrc = "/assets/icon_arrow-left_orange.svg";
+      iconSrc = "/assets/icon_back_orange.svg";
       break;
     case "shadow":
-      iconSrc = "/assets/icon_arrow-left_shadow.svg";
+      iconSrc = "/assets/icon_back_shadow.svg";
       break;
     default:
-      iconSrc = "/assets/icon_arrow-left.svg";
+      iconSrc =
+        theme === "dark"
+          ? "/assets/icon_back_dark.svg"
+          : "/assets/icon_back.svg";
   }
 
   const width = iconType === "shadow" ? 23 : 15;
