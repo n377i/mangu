@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { CoverContext } from "@/pages/_app";
-import Cover from "@/components/Cover/Cover";
 import RecipeList from "@/components/RecipeList/RecipeList";
 import BottomNav from "@/components/BottomNav/BottomNav";
 import TopNav from "@/components/TopNav/TopNav";
@@ -27,7 +26,6 @@ export default function HomePage({ theme, toggleTheme }) {
 
   return (
     <>
-      {showCover && <Cover />}
       {!showCover && (
         <>
           <TopNav
