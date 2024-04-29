@@ -60,7 +60,6 @@ export default function Form({ onSubmit, formName, defaultData, theme }) {
       };
 
       await onSubmit(updatedRecipe);
-      router.push("/");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
