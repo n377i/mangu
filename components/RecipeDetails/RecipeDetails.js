@@ -58,6 +58,7 @@ export default function RecipeDetails({ recipe, id, deleteRecipe }) {
 
     const units = [
       "g",
+      "mg",
       "kg",
       "ml",
       "l",
@@ -71,6 +72,7 @@ export default function RecipeDetails({ recipe, id, deleteRecipe }) {
       "Stück",
       "Scheibe",
       "Gramm",
+      "Milligramm",
       "Kilogramm",
       "Milliliter",
       "Liter",
