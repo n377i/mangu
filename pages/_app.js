@@ -5,6 +5,7 @@ import { PuffLoader } from "react-spinners";
 import { CenterDiv } from "@/styles";
 import GlobalStyle from "../styles";
 import useLocalStorage from "use-local-storage";
+import Cover from "@/components/Cover/Cover";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -12,29 +13,13 @@ export const CoverContext = createContext();
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const [showCover, setShowCover] = useState(false);
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [showCover, setShowCover] = useState(true);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-
-  useEffect(() => {
-    const isReloaded =
-      typeof window !== "undefined" &&
-      window.performance &&
-      window.performance.navigation.type ===
-        window.performance.navigation.TYPE_RELOAD;
-
-    if (isReloaded && router.pathname === "/") {
-      setShowCover(true);
-      const timer = setTimeout(() => {
-        setShowCover(false);
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [router.pathname]);
 
   useEffect(() => {
     const loadThemeFromStorage = () => {
@@ -56,6 +41,14 @@ export default function MyApp({ Component, pageProps }) {
     }
   }, [theme]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowCover(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   if (!themeLoaded) {
     return (
       <CenterDiv>
@@ -67,6 +60,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <CoverContext.Provider value={showCover}>
       <GlobalStyle />
+      {showCover && <Cover />}
       <SWRConfig value={{ fetcher }}>
         <Component {...pageProps} theme={theme} toggleTheme={toggleTheme} />
       </SWRConfig>
