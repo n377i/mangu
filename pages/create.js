@@ -15,8 +15,9 @@ export default function CreateRecipePage({ theme, toggleTheme }) {
       },
     });
     if (response.ok) {
-      await response.json();
-      router.push("/");
+      const data = await response.json();
+      const { _id } = data;
+      router.push(`/recipes/${_id}`);
     } else {
       console.error(response.status);
     }
