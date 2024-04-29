@@ -20,7 +20,7 @@ export default function EditRecipePage({ theme, toggleTheme }) {
         "Content-Type": "application/json",
       },
     });
-    router.push("/");
+    router.push(`/recipes/${id}`);
   }
 
   if (!isReady || isLoading || error)
