@@ -8,6 +8,7 @@ export const formField = {
   padding: "12px",
   border: "1px solid var(--color-light-grey)",
   borderRadius: "6px",
+  outline: "none",
 };
 
 export const FormContainer = styled.form`
@@ -27,6 +28,7 @@ export const Input = styled.input`
 
 export const TextArea = styled.textarea`
   ${formField}
+  resize: none;
 `;
 
 export const NumberContainer = styled.div`
