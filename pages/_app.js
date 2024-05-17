@@ -44,7 +44,7 @@ export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowCover(false);
-    }, 1500);
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
