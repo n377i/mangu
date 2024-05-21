@@ -15,6 +15,7 @@ import {
 import BackButton from "../BackButton/BackButton";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import BottomNav from "@/components/BottomNav/BottomNav";
 import { Fragment } from "react";
 
 const convertFraction = (value) => {
@@ -51,7 +52,7 @@ const convertFraction = (value) => {
   return value;
 };
 
-export default function RecipeDetails({ recipe, id, deleteRecipe }) {
+export default function RecipeDetails({ recipe, id, deleteRecipe, theme }) {
   const renderIngredients = () => {
     if (!recipe.ingredients) return null;
     const lines = recipe.ingredients.split("\n");
@@ -215,13 +216,12 @@ export default function RecipeDetails({ recipe, id, deleteRecipe }) {
           </Paragraph>
           {renderIngredients()}
         </Section>
-        {recipe.preparation && (
-          <Section>
-            <SectionTitle>Zubereitung</SectionTitle>
-            <NumberedList>{renderPreparation()}</NumberedList>
-          </Section>
-        )}
+        <Section>
+          <SectionTitle>Zubereitung</SectionTitle>
+          <NumberedList>{renderPreparation()}</NumberedList>
+        </Section>
       </Card>
+      <BottomNav theme={theme} />
     </>
   );
 }
