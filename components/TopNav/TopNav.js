@@ -8,10 +8,7 @@ export default function TopNav({ onToggleGridColumns, toggleTheme }) {
         <img src="/assets/icon_grid.svg" alt="Layout anpassen" />
       </Button>
       <img src="/assets/lettermark.svg" alt="Mangu Lettermark" />
-      <ThemeButton
-        toggleTheme={toggleTheme}
-        iconSrc="/assets/icon_theme_orange.svg"
-      />
+      <ThemeButton toggleTheme={toggleTheme} iconSrc="/assets/icon_theme.svg" />
     </NavContainer>
   );
 }
