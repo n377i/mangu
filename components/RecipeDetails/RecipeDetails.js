@@ -215,10 +215,12 @@ export default function RecipeDetails({ recipe, id, deleteRecipe }) {
           </Paragraph>
           {renderIngredients()}
         </Section>
-        <Section>
-          <SectionTitle>Zubereitung</SectionTitle>
-          <NumberedList>{renderPreparation()}</NumberedList>
-        </Section>
+        {recipe.preparation && (
+          <Section>
+            <SectionTitle>Zubereitung</SectionTitle>
+            <NumberedList>{renderPreparation()}</NumberedList>
+          </Section>
+        )}
       </Card>
     </>
   );
