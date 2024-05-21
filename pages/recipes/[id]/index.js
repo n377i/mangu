@@ -4,7 +4,7 @@ import { CenterDiv } from "@/styles";
 import { PuffLoader } from "react-spinners";
 import RecipeDetails from "@/components/RecipeDetails/RecipeDetails";
 
-export default function DetailsPage() {
+export default function DetailsPage({ theme }) {
   const router = useRouter();
   const { isReady } = router;
   const { id } = router.query;
@@ -29,5 +29,12 @@ export default function DetailsPage() {
     router.push("/");
   }
 
-  return <RecipeDetails recipe={recipe} id={id} deleteRecipe={deleteRecipe} />;
+  return (
+    <RecipeDetails
+      recipe={recipe}
+      id={id}
+      deleteRecipe={deleteRecipe}
+      theme={theme}
+    />
+  );
 }
