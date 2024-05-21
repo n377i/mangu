@@ -40,6 +40,7 @@ export const AddButtonShadow = styled.div`
   border-radius: 50%;
   background: var(--color-primary);
   box-shadow: 0px -2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 `;
 
 export const AddIcon = styled.img`
