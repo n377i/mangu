@@ -134,6 +134,7 @@ export default function Form({ onSubmit, formName, defaultData, theme }) {
         value={preparation}
         onChange={(e) => setPreparation(e.target.value)}
         rows={14}
+        required
       />
       <PreviewContainer>
         {previewImage && (
