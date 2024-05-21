@@ -90,6 +90,7 @@ export default function Form({ onSubmit, formName, defaultData, theme }) {
         name="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
       <NumberContainer>
         <Label htmlFor="title">Portionen</Label>
@@ -124,6 +125,7 @@ export default function Form({ onSubmit, formName, defaultData, theme }) {
         value={ingredients}
         onChange={(e) => setIngredients(e.target.value)}
         rows={14}
+        required
       />
       <Label htmlFor="preparation">Zubereitung</Label>
       <TextArea
