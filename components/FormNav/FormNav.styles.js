@@ -7,8 +7,6 @@ export const NavContainer = styled.div`
 
 export const Nav = styled.nav`
   position: fixed;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
   padding: 0 24px;
 `;
@@ -16,4 +14,5 @@ export const Nav = styled.nav`
 export const FormHeading = styled.h1`
   font: var(--font-heading-2);
   color: var(--color-primary);
+  text-align: center;
 `;
