@@ -7,4 +7,6 @@ export const StyledDiv = styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
+  position: absolute;
+  z-index: 3;
 `;
