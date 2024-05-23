@@ -1,7 +1,7 @@
-import { EditLink } from "./EditButton.styled";
+import { Button } from "./EditButton.styled";
 import Image from "next/image";
 
-export default function EditButton({ id, iconType }) {
+export default function EditButton({ onEdit, iconType }) {
   const iconSrc =
     iconType === "orange"
       ? "/assets/icon_edit_orange.svg"
@@ -9,8 +9,8 @@ export default function EditButton({ id, iconType }) {
   const height = iconType === "orange" ? 25 : 33;
 
   return (
-    <EditLink href={`/recipes/${id}/edit`} passHref>
+    <Button onClick={onEdit}>
       <Image src={iconSrc} alt="Bearbeiten" width={33} height={height} />
-    </EditLink>
+    </Button>
   );
 }
