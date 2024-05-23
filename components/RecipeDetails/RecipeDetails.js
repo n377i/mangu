@@ -12,11 +12,10 @@ import {
   SectionTitle,
   Paragraph,
 } from "./RecipeDetails.styled";
-import BackButton from "../BackButton/BackButton";
 import EditButton from "../EditButton/EditButton";
 import DeleteButton from "../DeleteButton/DeleteButton";
-import BottomNav from "@/components/BottomNav/BottomNav";
 import { Fragment } from "react";
+import BackButton from "../BackButton/BackButton";
 
 const convertFraction = (value) => {
   const fractions = {
@@ -52,7 +51,7 @@ const convertFraction = (value) => {
   return value;
 };
 
-export default function RecipeDetails({ recipe, id, deleteRecipe, theme }) {
+export default function RecipeDetails({ recipe, deleteRecipe, onEdit }) {
   const renderIngredients = () => {
     if (!recipe.ingredients) return null;
     const lines = recipe.ingredients.split("\n");
@@ -194,7 +193,7 @@ export default function RecipeDetails({ recipe, id, deleteRecipe, theme }) {
         <ImageContainer>
           <ButtonWrapper>
             <BackButton iconType="shadow" />
-            <EditButton id={id} iconType="shadow" />
+            <EditButton onEdit={onEdit} iconType="shadow" />
             <DeleteButton deleteRecipe={deleteRecipe} iconType="shadow" />
           </ButtonWrapper>
           <Image src={`${recipe.image}`} alt={recipe.title} />
@@ -204,7 +203,7 @@ export default function RecipeDetails({ recipe, id, deleteRecipe, theme }) {
         {!recipe.image && (
           <>
             <BackButton iconType="orange" />
-            <EditButton id={id} iconType="orange" />
+            <EditButton onEdit={onEdit} iconType="orange" />
             <DeleteButton deleteRecipe={deleteRecipe} iconType="orange" />
           </>
         )}
@@ -221,7 +220,6 @@ export default function RecipeDetails({ recipe, id, deleteRecipe, theme }) {
           <NumberedList>{renderPreparation()}</NumberedList>
         </Section>
       </Card>
-      <BottomNav theme={theme} />
     </>
   );
 }
