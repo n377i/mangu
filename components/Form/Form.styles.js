@@ -67,7 +67,7 @@ export const PreviewImage = styled.img`
   border-radius: inherit;
 `;
 
-export const Overlay = styled.div`
+export const PreviewImageOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
