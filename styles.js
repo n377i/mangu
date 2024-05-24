@@ -14,6 +14,7 @@ export default createGlobalStyle`
     --color-grey: #666;
     --color-light-grey: #cdc8bf;
     --color-night: #333;
+    --color-overlay: rgba(0, 0, 0, 0.5);
     --color-gradient: linear-gradient(to bottom right, #fec600, #fe9900);
 
     /* Font styles */
@@ -31,10 +32,11 @@ export default createGlobalStyle`
 
   .dark {
     --color-primary: #0f0e0e;
+    --color-input: #1f1f1f;
     --color-grey: #999;
     --color-light-grey: #666;
     --color-night: #fff;
-    --color-input: #1f1f1f;
+    --color-overlay: rgba(255, 255, 255, 0.5);
   }
 
   *,
