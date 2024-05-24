@@ -4,7 +4,7 @@ export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${({ $columns }) => $columns || 2}, 1fr);
   gap: 1rem;
-  padding: 0 1rem 1rem;
+  padding: 0 16px 20px;
 `;
 
 export const ImageContainer = styled.div`
