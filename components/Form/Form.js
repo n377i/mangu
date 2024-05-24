@@ -12,7 +12,7 @@ import {
   NumberDisplay,
   PreviewContainer,
   PreviewImage,
-  Overlay,
+  PreviewImageOverlay,
   DeleteIcon,
   FileInput,
   UploadButton,
@@ -20,7 +20,13 @@ import {
   Button,
 } from "./Form.styles";
 
-export default function Form({ onSubmit, formName, defaultData, theme }) {
+export default function Form({
+  onSubmit,
+  onClose,
+  formName,
+  defaultData,
+  theme,
+}) {
   const router = useRouter();
   const [servings, setServings] = useState(defaultData?.servings || 2);
   const [previewImage, setPreviewImage] = useState(defaultData?.image || null);
@@ -60,13 +66,14 @@ export default function Form({ onSubmit, formName, defaultData, theme }) {
       };
 
       await onSubmit(updatedRecipe);
+      onClose();
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
 
   const handleCancel = () => {
-    router.back();
+    onClose();
   };
 
   const handleIncrement = () => {
@@ -139,13 +146,13 @@ export default function Form({ onSubmit, formName, defaultData, theme }) {
       <PreviewContainer>
         {previewImage && (
           <>
-            <Overlay onClick={handleDeleteImage}>
+            <PreviewImageOverlay onClick={handleDeleteImage}>
               <DeleteIcon
                 src="/assets/icon_delete_shadow.svg"
                 fill="white"
                 alt="Bild löschen"
               />
-            </Overlay>
+            </PreviewImageOverlay>
             <PreviewImage
               src={previewImage}
               alt={previewImage ? "Bildvorschau" : ""}
