@@ -211,7 +211,8 @@ export default function RecipeDetails({ recipe, deleteRecipe, onEdit }) {
         <Section>
           <SectionTitle>Zutaten</SectionTitle>
           <Paragraph>
-            Für <strong>{recipe.servings}</strong> Portionen
+            Für <strong>{recipe.servings}</strong>{" "}
+            {recipe.servings === 1 ? "Portion" : "Portionen"}
           </Paragraph>
           {renderIngredients()}
         </Section>
