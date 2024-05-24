@@ -18,13 +18,13 @@ export const Image = styled.img`
 `;
 
 export const Card = styled.div`
-  padding: 118px 24px 76px;
+  padding: 118px 24px 43px;
   background: var(--color-primary);
 
   ${({ $hasImage }) =>
     $hasImage &&
     `
-    padding: 45px 24px 24px;
+    padding: 45px 24px 5px;
     position: relative;
     top: -36px;
     border-radius: 40px;
