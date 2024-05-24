@@ -177,7 +177,7 @@ export default function RecipeDetails({ recipe, deleteRecipe, onEdit }) {
     const preparationArray = recipe.preparation.split("\n");
 
     if (preparationArray.length === 1) {
-      return <p>{preparationArray[0]}</p>;
+      return <Paragraph>{preparationArray[0]}</Paragraph>;
     }
 
     return preparationArray.map((step, index) => (
