@@ -5,7 +5,7 @@ export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 50px 24px 11px;
+  padding: 54px 24px 11px;
   width: 100%;
   background: var(--color-primary);
   z-index: 1;
