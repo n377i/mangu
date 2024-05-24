@@ -29,6 +29,7 @@ export const AddButton = styled.div`
   background: var(--color-gradient);
   border-radius: 50%;
   border: 4px solid var(--color-primary);
+  cursor: pointer;
 `;
 
 export const AddButtonShadow = styled.div`
