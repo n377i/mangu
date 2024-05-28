@@ -73,6 +73,7 @@ export const ModalHeader = styled.div`
 
 export const ModalTitle = styled.h2`
   font: var(--font-heading-2);
+  color: var(--color-night);
 `;
 
 export const CloseButton = styled.button`
