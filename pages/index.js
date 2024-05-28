@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { CoverContext } from "@/pages/_app";
+import { useState } from "react";
 import RecipeList from "@/components/RecipeList/RecipeList";
 import BottomNav from "@/components/BottomNav/BottomNav";
 import TopNav from "@/components/TopNav/TopNav";
@@ -14,7 +13,6 @@ const MainContent = styled.main`
 `;
 
 export default function HomePage({ theme, toggleTheme }) {
-  const showCover = useContext(CoverContext);
   const [gridColumns, setGridColumns] = useLocalStorage("gridColumns", 2);
   const [isCreateOpen, setCreateOpen] = useState(false);
   const router = useRouter();
@@ -48,31 +46,27 @@ export default function HomePage({ theme, toggleTheme }) {
 
   return (
     <>
-      {!showCover && (
-        <>
-          <TopNav
-            onToggleGridColumns={toggleGridColumns}
-            theme={theme}
-            toggleTheme={toggleTheme}
-          />
-          <MainContent>
-            <RecipeList gridColumns={gridColumns} />
-          </MainContent>
-          <BottomNav theme={theme} onAddClick={() => setCreateOpen(true)} />
-          <Modal
-            modalTitle="Rezept erstellen"
-            isOpen={isCreateOpen}
-            onClose={() => setCreateOpen(false)}
-          >
-            <Form
-              onSubmit={addRecipe}
-              onClose={() => setCreateOpen(false)}
-              formName={"add-recipe"}
-              theme={theme}
-            />
-          </Modal>
-        </>
-      )}
+      <TopNav
+        onToggleGridColumns={toggleGridColumns}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
+      <MainContent>
+        <RecipeList gridColumns={gridColumns} />
+      </MainContent>
+      <BottomNav theme={theme} onAddClick={() => setCreateOpen(true)} />
+      <Modal
+        modalTitle="Rezept erstellen"
+        isOpen={isCreateOpen}
+        onClose={() => setCreateOpen(false)}
+      >
+        <Form
+          onSubmit={addRecipe}
+          onClose={() => setCreateOpen(false)}
+          formName={"add-recipe"}
+          theme={theme}
+        />
+      </Modal>
     </>
   );
 }
