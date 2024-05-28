@@ -52,6 +52,10 @@ const convertFraction = (value) => {
 };
 
 export default function RecipeDetails({ recipe, deleteRecipe, onEdit }) {
+  if (!recipe) {
+    return null;
+  }
+
   const renderIngredients = () => {
     if (!recipe.ingredients) return null;
     const lines = recipe.ingredients.split("\n");
