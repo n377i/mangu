@@ -5,8 +5,23 @@ export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const recipes = await Recipe.find();
-    return response.status(200).json(recipes);
+    const { query } = request.query;
+
+    if (query) {
+      const searchPattern = new RegExp(query, "i");
+      const recipes = await Recipe.find({
+        $or: [
+          { title: searchPattern },
+          { ingredients: searchPattern },
+          { preparation: searchPattern },
+        ],
+      });
+
+      return response.status(200).json(recipes);
+    } else {
+      const recipes = await Recipe.find();
+      return response.status(200).json(recipes);
+    }
   } else if (request.method === "POST") {
     try {
       const recipeData = request.body;
