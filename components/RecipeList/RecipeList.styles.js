@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${({ $columns }) => $columns || 2}, 1fr);
-  gap: 1rem;
-  padding: 0 16px 20px;
+  gap: 16px;
+  padding: 0 16px 24px;
 `;
 
 export const ImageContainer = styled.div`
