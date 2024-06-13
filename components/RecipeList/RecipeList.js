@@ -9,10 +9,12 @@ import {
   Caption,
 } from "./RecipeList.styles";
 
-export default function RecipeList({ gridColumns }) {
+export default function RecipeList({ gridColumns, filteredRecipes }) {
   const { data, isLoading } = useSWR("/api/recipes", { fallbackData: [] });
 
-  if (!data || isLoading) {
+  const recipeData = filteredRecipes || data;
+
+  if (!recipeData || isLoading) {
     return (
       <CenterDiv>
         <PuffLoader color="#fea500" />
@@ -22,7 +24,7 @@ export default function RecipeList({ gridColumns }) {
 
   return (
     <GridContainer $columns={gridColumns}>
-      {data.map((recipe) => (
+      {recipeData.map((recipe) => (
         <Link href={`/recipes/${recipe._id}`} key={recipe._id}>
           <figure>
             <ImageContainer>
