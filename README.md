@@ -1,6 +1,6 @@
 # Man&gcirc;u - Recipe App
 
-Man&gcirc;u can be used to save, edit, delete and search for recipes. It includes an image upload, an automatically formatted ingredient list and numbered preparation steps. The app is still a work in progress and will be expanded with additional features.
+Man&gcirc;u can be used to save, edit, delete and search for recipes. It includes an image upload, an automatically formatted ingredient list and numbered preparation steps. The app is still a work in progress and will be expanded with additional features. It is currently only available in German.
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/1c6eabb9-b9ad-4618-849c-4a977016a851" alt="demo">
@@ -20,6 +20,7 @@ Man&gcirc;u can be used to save, edit, delete and search for recipes. It include
 
 1. Clone the repository to your local machine.
 2. Copy the `env.local.example` file, rename it to `env.local` and add the corresponding values.
-3. Run `npm install` to install all required dependencies.
-4. Start the application by executing `npm run dev`.
-5. Access the app via the local server URL provided in your terminal.
+3. If you want, you can copy initial recipes from `resources/recipes.js` into your database.
+4. Run `npm install` to install all required dependencies.
+5. Start the application by executing `npm run dev`.
+6. Access the app via the local server URL provided in your terminal.
