@@ -2,12 +2,7 @@
 
 Man&gcirc;u can be used to save, edit, delete and search for recipes. It includes an image upload, an automatically formatted ingredient list and numbered preparation steps. The app is still a work in progress and will be expanded with additional features.
 
-<div align="center">
-  <video width="640" height="360" controls>
-    <source src="https://github.com/user-attachments/assets/4d1cf405-e774-4d27-9d42-f48ac4e65fc3" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+https://github.com/user-attachments/assets/4d1cf405-e774-4d27-9d42-f48ac4e65fc3
 
 ## Tech Stack
 
