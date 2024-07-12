@@ -2,6 +2,8 @@
 
 Man&gcirc;u can be used to save, edit, delete and search for recipes. It includes an image upload, an automatically formatted ingredient list and numbered preparation steps. The app is still a work in progress and will be expanded with additional features. It is currently only available in German.
 
+## Demo
+
 <div align="center">
   <img src="https://github.com/user-attachments/assets/1c6eabb9-b9ad-4618-849c-4a977016a851" alt="demo">
 </div>
