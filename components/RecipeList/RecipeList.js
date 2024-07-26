@@ -29,7 +29,7 @@ export default function RecipeList({ gridColumns, filteredRecipes }) {
           <figure>
             <ImageContainer>
               <Image
-                src={recipe.image || "/assets/placeholder.svg"}
+                src={recipe.image?.url || "/assets/placeholder.svg"} // Hier wird auf recipe.image.url zugegriffen
                 alt={recipe.title}
               />
             </ImageContainer>
