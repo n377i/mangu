@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import useLocalStorage from "use-local-storage";
@@ -7,7 +6,6 @@ import useLocalStorage from "use-local-storage";
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function MyApp({ Component, pageProps }) {
-  const router = useRouter();
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [theme, setTheme] = useLocalStorage("theme", "light");
 
