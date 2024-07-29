@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ImageContainer = styled.div`
   width: 100%;
@@ -7,8 +7,17 @@ export const ImageContainer = styled.div`
 
 export const ButtonWrapper = styled.div`
   position: relative;
-  top: -4px;
-  margin-left: 20px;
+
+  ${({ $hasImage }) =>
+    $hasImage
+      ? css`
+          top: -4px;
+          margin-left: 20px;
+        `
+      : css`
+          top: initial; // oder der Wert, den Sie möchten, wenn $hasImage false ist
+          margin-left: 24px;
+        `}
 `;
 
 export const Image = styled.img`
@@ -18,7 +27,7 @@ export const Image = styled.img`
 `;
 
 export const Card = styled.div`
-  padding: 118px 24px 43px;
+  padding: 122px 24px 43px;
   background: var(--color-primary);
 
   ${({ $hasImage }) =>

@@ -193,24 +193,23 @@ export default function RecipeDetails({ recipe, deleteRecipe, onEdit }) {
 
   return (
     <>
-      {recipe.image && recipe.image.url && (
+      {recipe.image && recipe.image.url ? (
         <ImageContainer>
-          <ButtonWrapper>
+          <ButtonWrapper $hasImage={true}>
             <BackButton iconType="shadow" />
             <EditButton onEdit={onEdit} iconType="shadow" />
             <DeleteButton deleteRecipe={deleteRecipe} iconType="shadow" />
           </ButtonWrapper>
           <Image src={recipe.image.url} alt={recipe.title} />
         </ImageContainer>
+      ) : (
+        <ButtonWrapper $hasImage={false}>
+          <BackButton iconType="orange" />
+          <EditButton onEdit={onEdit} iconType="orange" />
+          <DeleteButton deleteRecipe={deleteRecipe} iconType="orange" />
+        </ButtonWrapper>
       )}
-      <Card $hasImage={recipe.image && recipe.image.url}>
-        {!recipe.image && (
-          <>
-            <BackButton iconType="orange" />
-            <EditButton onEdit={onEdit} iconType="orange" />
-            <DeleteButton deleteRecipe={deleteRecipe} iconType="orange" />
-          </>
-        )}
+      <Card $hasImage={!!(recipe.image && recipe.image.url)}>
         <RecipeTitle>{recipe.title}</RecipeTitle>
         <Section>
           <SectionTitle>Zutaten</SectionTitle>
