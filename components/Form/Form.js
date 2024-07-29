@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
-import upload from "@/utils/upload";
+import uploadImageToCloudinary from "@/utils/cloudinary/upload-image";
+import deleteImageFromCloudinary from "@/utils/cloudinary/delete-image";
 import {
   FormContainer,
   Label,
@@ -27,9 +27,9 @@ export default function Form({
   defaultData,
   theme,
 }) {
-  const router = useRouter();
   const [servings, setServings] = useState(defaultData?.servings || 2);
   const [previewImage, setPreviewImage] = useState(defaultData?.image || null);
+  const [newImageFile, setNewImageFile] = useState(null);
   const [title, setTitle] = useState(defaultData?.title || "");
   const [ingredients, setIngredients] = useState(
     defaultData?.ingredients || ""
@@ -41,9 +41,10 @@ export default function Form({
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setNewImageFile(file);
       const reader = new FileReader();
       reader.onload = () => {
-        setPreviewImage(reader.result);
+        setPreviewImage({ url: reader.result });
       };
       reader.readAsDataURL(file);
     }
@@ -51,19 +52,33 @@ export default function Form({
 
   const handleDeleteImage = () => {
     setPreviewImage(null);
+    setNewImageFile(null);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      let image;
+      if (newImageFile) {
+        if (previewImage && previewImage.public_id) {
+          await deleteImageFromCloudinary(previewImage.public_id);
+        }
+        image = await uploadImageToCloudinary(newImageFile);
+      } else if (previewImage && previewImage.url) {
+        image = previewImage;
+      }
+
       const updatedRecipe = {
         title,
         servings,
         ingredients,
         preparation,
-        image: previewImage ? await upload(previewImage) : null,
       };
+
+      if (image) {
+        updatedRecipe.image = image;
+      }
 
       await onSubmit(updatedRecipe);
       onClose();
@@ -109,7 +124,7 @@ export default function Form({
                   ? "/assets/icon_minus_dark.svg"
                   : "/assets/icon_minus.svg"
               }
-              alt="Plus"
+              alt="Minus"
             />
           </NumberButton>
           <NumberDisplay>{servings}</NumberDisplay>
@@ -154,7 +169,7 @@ export default function Form({
               />
             </PreviewImageOverlay>
             <PreviewImage
-              src={previewImage}
+              src={previewImage ? previewImage.url : ""}
               alt={previewImage ? "Bildvorschau" : ""}
               onClick={() => document.getElementById("fileInput").click()}
             />
