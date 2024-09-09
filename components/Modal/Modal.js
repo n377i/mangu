@@ -8,7 +8,13 @@ import {
   ModalContent,
 } from "./Modal.styled";
 
-export default function Modal({ isOpen, onClose, modalTitle, children }) {
+export default function Modal({
+  isOpen,
+  onClose,
+  modalTitle,
+  hasForm,
+  children,
+}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -38,7 +44,7 @@ export default function Modal({ isOpen, onClose, modalTitle, children }) {
         $isOpen={isOpen}
         onAnimationEnd={() => !isOpen && onClose()}
       >
-        <ModalContainer $isOpen={isOpen}>
+        <ModalContainer $isOpen={isOpen} $hasForm={hasForm}>
           <ModalHeader>
             <ModalTitle>{modalTitle}</ModalTitle>
             <CloseButton onClick={onClose}>&times;</CloseButton>
