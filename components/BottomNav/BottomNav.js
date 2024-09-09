@@ -56,6 +56,7 @@ export default function BottomNav({ theme }) {
         modalTitle="Rezept erstellen"
         isOpen={isCreateOpen}
         onClose={() => setCreateOpen(false)}
+        hasForm={true}
       >
         <Form
           onSubmit={addRecipe}
