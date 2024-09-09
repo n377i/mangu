@@ -6,11 +6,13 @@ import { PuffLoader } from "react-spinners";
 import RecipeDetails from "@/components/RecipeDetails/RecipeDetails";
 import Modal from "@/components/Modal/Modal";
 import Form from "@/components/Form/Form";
+import { ButtonWrapper, Button } from "@/components/Form/Form.styles";
 
 export default function DetailsPage({ theme }) {
   const router = useRouter();
   const { id } = router.query;
   const [isEditOpen, setEditOpen] = useState(false);
+  const [isConfirmOpen, setConfirmOpen] = useState(false);
 
   const {
     data: recipe,
@@ -53,14 +55,27 @@ export default function DetailsPage({ theme }) {
       <RecipeDetails
         recipe={recipe}
         id={id}
-        deleteRecipe={deleteRecipe}
+        deleteRecipe={() => setConfirmOpen(true)}
         theme={theme}
         onEdit={() => setEditOpen(true)}
       />
       <Modal
+        modalTitle="Rezept wirklich löschen?"
+        isOpen={isConfirmOpen}
+        onClose={() => setConfirmOpen(false)}
+      >
+        <ButtonWrapper>
+          <Button type="button" onClick={() => setConfirmOpen(false)}>
+            Abbrechen
+          </Button>
+          <Button onClick={deleteRecipe}>Löschen</Button>
+        </ButtonWrapper>
+      </Modal>
+      <Modal
         modalTitle="Rezept bearbeiten"
         isOpen={isEditOpen}
         onClose={() => setEditOpen(false)}
+        hasForm={true}
       >
         <Form
           onSubmit={editRecipe}
