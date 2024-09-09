@@ -35,13 +35,7 @@ export default function BackButton({ iconType, $isDefaultIcon, theme }) {
       onClick={handleClick}
       $isDefaultIcon={$isDefaultIcon}
     >
-      <Image
-        src={iconSrc}
-        alt="Zurück"
-        width={width}
-        height={height}
-        priority
-      />
+      <Image src={iconSrc} alt="Zurück" width={width} height={height} />
     </BackLink>
   );
 }

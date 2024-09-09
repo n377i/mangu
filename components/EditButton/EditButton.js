@@ -10,13 +10,7 @@ export default function EditButton({ onEdit, iconType }) {
 
   return (
     <Button onClick={onEdit}>
-      <Image
-        src={iconSrc}
-        alt="Bearbeiten"
-        width={33}
-        height={height}
-        priority
-      />
+      <Image src={iconSrc} alt="Bearbeiten" width={33} height={height} />
     </Button>
   );
 }

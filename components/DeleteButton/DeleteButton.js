@@ -10,7 +10,7 @@ export default function DeleteButton({ deleteRecipe, iconType }) {
 
   return (
     <DeleteLink href={`#`} onClick={deleteRecipe}>
-      <Image src={iconSrc} alt="Löschen" width={32} height={height} priority />
+      <Image src={iconSrc} alt="Löschen" width={32} height={height} />
     </DeleteLink>
   );
 }
