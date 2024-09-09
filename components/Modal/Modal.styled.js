@@ -53,7 +53,7 @@ export const ModalOverlay = styled.div`
 
 export const ModalContainer = styled.div`
   width: 100%;
-  height: 94%;
+  height: ${({ $hasForm }) => ($hasForm ? 94 : 22.6)}%;
   background: var(--color-primary);
   border-radius: 10px 10px 0 0;
   padding: 0;
