@@ -178,11 +178,11 @@ export default function RecipeDetails({ recipe, deleteRecipe, onEdit }) {
 
   const renderPreparation = () => {
     if (!recipe.preparation) return null;
-    const preparationArray = recipe.preparation.split("\n");
 
-    if (preparationArray.length === 1) {
-      return <Paragraph>{preparationArray[0]}</Paragraph>;
-    }
+    const preparationArray = recipe.preparation
+      .split("\n")
+      // Remove empty steps
+      .filter((step) => step.trim() !== "");
 
     return preparationArray.map((step, index) => (
       <NumberedItem key={index}>
